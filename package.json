@@ -1,0 +1,85 @@
+{
+  "name": "better_bridge",
+  "version": "1.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "backend:prebuild": "npx rimraf backend/dist",
+    "backend:build": "nest build",
+    "backend:postbuild": "npx cpx \"backend/public/**/*\" \"backend/dist/public\" && node backend/scripts/reorganize-dist.js",
+    "backend:start": "npm run backend:build && node backend/dist/main.js",
+    "backend:dev": "nest start --watch",
+    "backend:debug": "nest start --debug --watch",
+    "backend:prod": "node backend/dist/main.js",
+    "frontend:dev": "cd frontend && npm run dev:client",
+    "frontend:build": "cd frontend && npm run build",
+    "frontend:start": "cd frontend && npm start",
+    "dev": "concurrently \"npm run backend:dev\" \"npm run frontend:dev\"",
+    "build": "npm run backend:build && npm run frontend:build",
+    "start": "concurrently \"npm run backend:prod\" \"npm run frontend:start\"",
+    "lint": "eslint \"{backend/src,frontend/src}/**/*.ts\" --fix",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "dependencies": {
+    "@nestjs/common": "^10.0.0",
+    "@nestjs/config": "^4.0.2",
+    "@nestjs/core": "^10.0.0",
+    "@nestjs/mapped-types": "^2.1.0",
+    "@nestjs/platform-express": "^10.0.0",
+    "axios": "^1.11.0",
+    "crypto-js": "^4.2.0",
+    "express": "^5.1.0",
+    "firebase": "^12.7.0",
+    "reflect-metadata": "^0.2.0",
+    "rxjs": "^7.8.1",
+    "stripe": "^18.5.0",
+    "zod": "^4.1.5"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^10.0.0",
+    "@nestjs/schematics": "^10.0.0",
+    "@nestjs/testing": "^10.0.0",
+    "@types/express": "^5.0.0",
+    "@types/jest": "^29.5.2",
+    "@types/node": "^20.19.27",
+    "@types/supertest": "^6.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "concurrently": "^9.1.0",
+    "cpx": "^1.5.0",
+    "dotenv": "^17.2.3",
+    "eslint": "^8.0.0",
+    "googleapis": "^166.0.0",
+    "jest": "^29.5.0",
+    "rimraf": "^6.0.1",
+    "source-map-support": "^0.5.21",
+    "supertest": "^7.0.0",
+    "ts-jest": "^29.1.0",
+    "ts-loader": "^9.4.3",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.1.3",
+    "vitest": "^3.2.4"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": ".",
+    "testMatch": [
+      "<rootDir>/backend/src/**/*.spec.ts",
+      "<rootDir>/backend/test/**/*.test.ts"
+    ],
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "backend/src/**/*.(t|j)s"
+    ],
+    "coverageDirectory": "coverage",
+    "testEnvironment": "node"
+  }
+}

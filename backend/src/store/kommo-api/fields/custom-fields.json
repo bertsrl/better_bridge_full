@@ -1,0 +1,638 @@
+{
+    "_total_items": 24,
+    "_page": 1,
+    "_page_count": 1,
+    "_links": {
+        "self": {
+            "href": "https://betterspeakers.kommo.com/api/v4/leads/custom_fields?page=1&limit=250"
+        }
+    },
+    "_embedded": {
+        "custom_fields": [
+            {
+                "id": 1593517,
+                "name": "utm_content",
+                "type": "tracking_data",
+                "account_id": 35139736,
+                "code": "UTM_CONTENT",
+                "sort": 514,
+                "is_api_only": true,
+                "enums": null,
+                "group_id": "statistic",
+                "required_statuses": [],
+                "is_deletable": false,
+                "is_predefined": true,
+                "entity_type": "leads",
+                "tracking_callback": null,
+                "remind": null,
+                "triggers": [],
+                "currency": null,
+                "hidden_statuses": [],
+                "chained_lists": null,
+                "_links": {
+                    "self": {
+                        "href": "https://betterspeakers.kommo.com/api/v4/leads/custom_fields/1593517?page=1&limit=250"
+                    }
+                }
+            },
+            {
+                "id": 1593519,
+                "name": "utm_medium",
+                "type": "tracking_data",
+                "account_id": 35139736,
+                "code": "UTM_MEDIUM",
+                "sort": 515,
+                "is_api_only": true,
+                "enums": null,
+                "group_id": "statistic",
+                "required_statuses": [],
+                "is_deletable": false,
+                "is_predefined": true,
+                "entity_type": "leads",
+                "tracking_callback": null,
+                "remind": null,
+                "triggers": [],
+                "currency": null,
+                "hidden_statuses": [],
+                "chained_lists": null,
+                "_links": {
+                    "self": {
+                        "href": "https://betterspeakers.kommo.com/api/v4/leads/custom_fields/1593519?page=1&limit=250"
+                    }
+                }
+            },
+            {
+                "id": 1593521,
+                "name": "utm_campaign",
+                "type": "tracking_data",
+                "account_id": 35139736,
+                "code": "UTM_CAMPAIGN",
+                "sort": 516,
+                "is_api_only": true,
+                "enums": null,
+                "group_id": "statistic",
+                "required_statuses": [],
+                "is_deletable": false,
+                "is_predefined": true,
+                "entity_type": "leads",
+                "tracking_callback": null,
+                "remind": null,
+                "triggers": [],
+                "currency": null,
+                "hidden_statuses": [],
+                "chained_lists": null,
+                "_links": {
+                    "self": {
+                        "href": "https://betterspeakers.kommo.com/api/v4/leads/custom_fields/1593521?page=1&limit=250"
+                    }
+                }
+            },
+            {
+                "id": 1593523,
+                "name": "utm_source",
+                "type": "tracking_data",
+                "account_id": 35139736,
+                "code": "UTM_SOURCE",
+                "sort": 517,
+                "is_api_only": true,
+                "enums": null,
+                "group_id": "statistic",
+                "required_statuses": [],
+                "is_deletable": false,
+                "is_predefined": true,
+                "entity_type": "leads",
+                "tracking_callback": null,
+                "remind": null,
+                "triggers": [],
+                "currency": null,
+                "hidden_statuses": [],
+                "chained_lists": null,
+                "_links": {
+                    "self": {
+                        "href": "https://betterspeakers.kommo.com/api/v4/leads/custom_fields/1593523?page=1&limit=250"
+                    }
+                }
+            },
+            {
+                "id": 1593525,
+                "name": "utm_term",
+                "type": "tracking_data",
+                "account_id": 35139736,
+                "code": "UTM_TERM",
+                "sort": 518,
+                "is_api_only": true,
+                "enums": null,
+                "group_id": "statistic",
+                "required_statuses": [],
+                "is_deletable": false,
+                "is_predefined": true,
+                "entity_type": "leads",
+                "tracking_callback": null,
+                "remind": null,
+                "triggers": [],
+                "currency": null,
+                "hidden_statuses": [],
+                "chained_lists": null,
+                "_links": {
+                    "self": {
+                        "href": "https://betterspeakers.kommo.com/api/v4/leads/custom_fields/1593525?page=1&limit=250"
+                    }
+                }
+            },
+            {
+                "id": 1593527,
+                "name": "utm_referrer",
+                "type": "tracking_data",
+                "account_id": 35139736,
+                "code": "UTM_REFERRER",
+                "sort": 519,
+                "is_api_only": true,
+                "enums": null,
+                "group_id": "statistic",
+                "required_statuses": [],
+                "is_deletable": false,
+                "is_predefined": true,
+                "entity_type": "leads",
+                "tracking_callback": null,
+                "remind": null,
+                "triggers": [],
+                "currency": null,
+                "hidden_statuses": [],
+                "chained_lists": null,
+                "_links": {
+                    "self": {
+                        "href": "https://betterspeakers.kommo.com/api/v4/leads/custom_fields/1593527?page=1&limit=250"
+                    }
+                }
+            },
+            {
+                "id": 1593529,
+                "name": "referrer",
+                "type": "tracking_data",
+                "account_id": 35139736,
+                "code": "REFERRER",
+                "sort": 520,
+                "is_api_only": true,
+                "enums": null,
+                "group_id": "statistic",
+                "required_statuses": [],
+                "is_deletable": false,
+                "is_predefined": true,
+                "entity_type": "leads",
+                "tracking_callback": null,
+                "remind": null,
+                "triggers": [],
+                "currency": null,
+                "hidden_statuses": [],
+                "chained_lists": null,
+                "_links": {
+                    "self": {
+                        "href": "https://betterspeakers.kommo.com/api/v4/leads/custom_fields/1593529?page=1&limit=250"
+                    }
+                }
+            },
+            {
+                "id": 1593531,
+                "name": "gclientid",
+                "type": "tracking_data",
+                "account_id": 35139736,
+                "code": "GCLIENTID",
+                "sort": 521,
+                "is_api_only": true,
+                "enums": null,
+                "group_id": "statistic",
+                "required_statuses": [],
+                "is_deletable": false,
+                "is_predefined": true,
+                "entity_type": "leads",
+                "tracking_callback": null,
+                "remind": null,
+                "triggers": [],
+                "currency": null,
+                "hidden_statuses": [],
+                "chained_lists": null,
+                "_links": {
+                    "self": {
+                        "href": "https://betterspeakers.kommo.com/api/v4/leads/custom_fields/1593531?page=1&limit=250"
+                    }
+                }
+            },
+            {
+                "id": 1593533,
+                "name": "gclid",
+                "type": "tracking_data",
+                "account_id": 35139736,
+                "code": "GCLID",
+                "sort": 522,
+                "is_api_only": true,
+                "enums": null,
+                "group_id": "statistic",
+                "required_statuses": [],
+                "is_deletable": false,
+                "is_predefined": true,
+                "entity_type": "leads",
+                "tracking_callback": null,
+                "remind": null,
+                "triggers": [],
+                "currency": null,
+                "hidden_statuses": [],
+                "chained_lists": null,
+                "_links": {
+                    "self": {
+                        "href": "https://betterspeakers.kommo.com/api/v4/leads/custom_fields/1593533?page=1&limit=250"
+                    }
+                }
+            },
+            {
+                "id": 1593535,
+                "name": "fbclid",
+                "type": "tracking_data",
+                "account_id": 35139736,
+                "code": "FBCLID",
+                "sort": 523,
+                "is_api_only": true,
+                "enums": null,
+                "group_id": "statistic",
+                "required_statuses": [],
+                "is_deletable": false,
+                "is_predefined": true,
+                "entity_type": "leads",
+                "tracking_callback": null,
+                "remind": null,
+                "triggers": [],
+                "currency": null,
+                "hidden_statuses": [],
+                "chained_lists": null,
+                "_links": {
+                    "self": {
+                        "href": "https://betterspeakers.kommo.com/api/v4/leads/custom_fields/1593535?page=1&limit=250"
+                    }
+                }
+            },
+            {
+                "id": 1603956,
+                "name": "Student Name",
+                "type": "text",
+                "account_id": 35139736,
+                "code": null,
+                "sort": 505,
+                "is_api_only": false,
+                "enums": null,
+                "group_id": null,
+                "required_statuses": [],
+                "is_deletable": true,
+                "is_predefined": false,
+                "entity_type": "leads",
+                "tracking_callback": null,
+                "remind": null,
+                "triggers": [],
+                "currency": null,
+                "hidden_statuses": [],
+                "chained_lists": null,
+                "_links": {
+                    "self": {
+                        "href": "https://betterspeakers.kommo.com/api/v4/leads/custom_fields/1603956?page=1&limit=250"
+                    }
+                }
+            },
+            {
+                "id": 1733696,
+                "name": "Student Email",
+                "type": "text",
+                "account_id": 35139736,
+                "code": null,
+                "sort": 506,
+                "is_api_only": false,
+                "enums": null,
+                "group_id": null,
+                "required_statuses": [],
+                "is_deletable": true,
+                "is_predefined": false,
+                "entity_type": "leads",
+                "tracking_callback": null,
+                "remind": null,
+                "triggers": [],
+                "currency": null,
+                "hidden_statuses": [],
+                "chained_lists": null,
+                "_links": {
+                    "self": {
+                        "href": "https://betterspeakers.kommo.com/api/v4/leads/custom_fields/1733696?page=1&limit=250"
+                    }
+                }
+            },
+            {
+                "id": 1733698,
+                "name": "Student Phone",
+                "type": "text",
+                "account_id": 35139736,
+                "code": null,
+                "sort": 507,
+                "is_api_only": false,
+                "enums": null,
+                "group_id": null,
+                "required_statuses": [],
+                "is_deletable": true,
+                "is_predefined": false,
+                "entity_type": "leads",
+                "tracking_callback": null,
+                "remind": null,
+                "triggers": [],
+                "currency": null,
+                "hidden_statuses": [],
+                "chained_lists": null,
+                "_links": {
+                    "self": {
+                        "href": "https://betterspeakers.kommo.com/api/v4/leads/custom_fields/1733698?page=1&limit=250"
+                    }
+                }
+            },
+            {
+                "id": 1733700,
+                "name": "Student School",
+                "type": "text",
+                "account_id": 35139736,
+                "code": null,
+                "sort": 508,
+                "is_api_only": false,
+                "enums": null,
+                "group_id": null,
+                "required_statuses": [],
+                "is_deletable": true,
+                "is_predefined": false,
+                "entity_type": "leads",
+                "tracking_callback": null,
+                "remind": null,
+                "triggers": [],
+                "currency": null,
+                "hidden_statuses": [],
+                "chained_lists": null,
+                "_links": {
+                    "self": {
+                        "href": "https://betterspeakers.kommo.com/api/v4/leads/custom_fields/1733700?page=1&limit=250"
+                    }
+                }
+            },
+            {
+                "id": 1733702,
+                "name": "Student Class",
+                "type": "text",
+                "account_id": 35139736,
+                "code": null,
+                "sort": 509,
+                "is_api_only": false,
+                "enums": null,
+                "group_id": null,
+                "required_statuses": [],
+                "is_deletable": true,
+                "is_predefined": false,
+                "entity_type": "leads",
+                "tracking_callback": null,
+                "remind": null,
+                "triggers": [],
+                "currency": null,
+                "hidden_statuses": [],
+                "chained_lists": null,
+                "_links": {
+                    "self": {
+                        "href": "https://betterspeakers.kommo.com/api/v4/leads/custom_fields/1733702?page=1&limit=250"
+                    }
+                }
+            },
+            {
+                "id": 1733752,
+                "name": "DEMO DAY",
+                "type": "text",
+                "account_id": 35139736,
+                "code": null,
+                "sort": 510,
+                "is_api_only": false,
+                "enums": null,
+                "group_id": null,
+                "required_statuses": [],
+                "is_deletable": true,
+                "is_predefined": false,
+                "entity_type": "leads",
+                "tracking_callback": null,
+                "remind": null,
+                "triggers": [],
+                "currency": null,
+                "hidden_statuses": [],
+                "chained_lists": null,
+                "_links": {
+                    "self": {
+                        "href": "https://betterspeakers.kommo.com/api/v4/leads/custom_fields/1733752?page=1&limit=250"
+                    }
+                }
+            },
+            {
+                "id": 1733754,
+                "name": "STUDENT GROUP",
+                "type": "text",
+                "account_id": 35139736,
+                "code": null,
+                "sort": 511,
+                "is_api_only": false,
+                "enums": null,
+                "group_id": null,
+                "required_statuses": [],
+                "is_deletable": true,
+                "is_predefined": false,
+                "entity_type": "leads",
+                "tracking_callback": null,
+                "remind": null,
+                "triggers": [],
+                "currency": null,
+                "hidden_statuses": [],
+                "chained_lists": null,
+                "_links": {
+                    "self": {
+                        "href": "https://betterspeakers.kommo.com/api/v4/leads/custom_fields/1733754?page=1&limit=250"
+                    }
+                }
+            },
+            {
+                "id": 1734174,
+                "name": "Business",
+                "type": "text",
+                "account_id": 35139736,
+                "code": null,
+                "sort": 512,
+                "is_api_only": false,
+                "enums": null,
+                "group_id": null,
+                "required_statuses": [],
+                "is_deletable": true,
+                "is_predefined": false,
+                "entity_type": "leads",
+                "tracking_callback": null,
+                "remind": null,
+                "triggers": [],
+                "currency": null,
+                "hidden_statuses": [],
+                "chained_lists": null,
+                "_links": {
+                    "self": {
+                        "href": "https://betterspeakers.kommo.com/api/v4/leads/custom_fields/1734174?page=1&limit=250"
+                    }
+                }
+            },
+            {
+                "id": 1734194,
+                "name": "Parent Name",
+                "type": "text",
+                "account_id": 35139736,
+                "code": null,
+                "sort": 501,
+                "is_api_only": false,
+                "enums": null,
+                "group_id": null,
+                "required_statuses": [],
+                "is_deletable": true,
+                "is_predefined": false,
+                "entity_type": "leads",
+                "tracking_callback": null,
+                "remind": null,
+                "triggers": [],
+                "currency": null,
+                "hidden_statuses": [],
+                "chained_lists": null,
+                "_links": {
+                    "self": {
+                        "href": "https://betterspeakers.kommo.com/api/v4/leads/custom_fields/1734194?page=1&limit=250"
+                    }
+                }
+            },
+            {
+                "id": 1734196,
+                "name": "Parent Email",
+                "type": "text",
+                "account_id": 35139736,
+                "code": null,
+                "sort": 502,
+                "is_api_only": false,
+                "enums": null,
+                "group_id": null,
+                "required_statuses": [],
+                "is_deletable": true,
+                "is_predefined": false,
+                "entity_type": "leads",
+                "tracking_callback": null,
+                "remind": null,
+                "triggers": [],
+                "currency": null,
+                "hidden_statuses": [],
+                "chained_lists": null,
+                "_links": {
+                    "self": {
+                        "href": "https://betterspeakers.kommo.com/api/v4/leads/custom_fields/1734196?page=1&limit=250"
+                    }
+                }
+            },
+            {
+                "id": 1734198,
+                "name": "Parent Phone",
+                "type": "text",
+                "account_id": 35139736,
+                "code": null,
+                "sort": 504,
+                "is_api_only": false,
+                "enums": null,
+                "group_id": null,
+                "required_statuses": [],
+                "is_deletable": true,
+                "is_predefined": false,
+                "entity_type": "leads",
+                "tracking_callback": null,
+                "remind": null,
+                "triggers": [],
+                "currency": null,
+                "hidden_statuses": [],
+                "chained_lists": null,
+                "_links": {
+                    "self": {
+                        "href": "https://betterspeakers.kommo.com/api/v4/leads/custom_fields/1734198?page=1&limit=250"
+                    }
+                }
+            },
+            {
+                "id": 1734200,
+                "name": "Parent Job",
+                "type": "text",
+                "account_id": 35139736,
+                "code": null,
+                "sort": 503,
+                "is_api_only": false,
+                "enums": null,
+                "group_id": null,
+                "required_statuses": [],
+                "is_deletable": true,
+                "is_predefined": false,
+                "entity_type": "leads",
+                "tracking_callback": null,
+                "remind": null,
+                "triggers": [],
+                "currency": null,
+                "hidden_statuses": [],
+                "chained_lists": null,
+                "_links": {
+                    "self": {
+                        "href": "https://betterspeakers.kommo.com/api/v4/leads/custom_fields/1734200?page=1&limit=250"
+                    }
+                }
+            },
+            {
+                "id": 1734250,
+                "name": "campaign_week",
+                "type": "tracking_data",
+                "account_id": 35139736,
+                "code": "CAMPAIGN_WEEK",
+                "sort": 525,
+                "is_api_only": true,
+                "enums": null,
+                "group_id": "statistic",
+                "required_statuses": [],
+                "is_deletable": true,
+                "is_predefined": false,
+                "entity_type": "leads",
+                "tracking_callback": null,
+                "remind": null,
+                "triggers": [],
+                "currency": null,
+                "hidden_statuses": [],
+                "chained_lists": null,
+                "_links": {
+                    "self": {
+                        "href": "https://betterspeakers.kommo.com/api/v4/leads/custom_fields/1734250?page=1&limit=250"
+                    }
+                }
+            },
+            {
+                "id": 1734252,
+                "name": "ad_code",
+                "type": "tracking_data",
+                "account_id": 35139736,
+                "code": "AD_CODE",
+                "sort": 500,
+                "is_api_only": true,
+                "enums": null,
+                "group_id": "statistic",
+                "required_statuses": [],
+                "is_deletable": true,
+                "is_predefined": false,
+                "entity_type": "leads",
+                "tracking_callback": null,
+                "remind": null,
+                "triggers": [],
+                "currency": null,
+                "hidden_statuses": [],
+                "chained_lists": null,
+                "_links": {
+                    "self": {
+                        "href": "https://betterspeakers.kommo.com/api/v4/leads/custom_fields/1734252?page=1&limit=250"
+                    }
+                }
+            }
+        ]
+    }
+}
