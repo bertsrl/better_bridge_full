@@ -5,7 +5,6 @@ const pipelinesRoute = `https://betterspeakers.kommo.com/api/v4/leads/pipelines`
 
 export default async function getPipelines() {
     const kommoApiToken = getEnv()['KOMMO_API_TOKEN'];
-    console.log('🔍 kommoApiToken: ', kommoApiToken);
 
     const response = await axios.get(pipelinesRoute, {
         headers: {

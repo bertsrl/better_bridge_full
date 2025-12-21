@@ -17,7 +17,7 @@ export class RegistrationService {
         const apiInfo = apiInfoArray[0] as z.infer<typeof apiInfoSchema>;
 
         const DEFINED_PIPELINE_ID = apiInfo.pipeline_id;
-        const DEFINED_TAGS = apiInfo.tag_config;
+        const DEFINED_TAG_CONFIG = apiInfo.kommo_map.tagConfig;
 
         // start working on the request
         // 2. get the raw request
@@ -32,14 +32,14 @@ export class RegistrationService {
         console.log('🔍 apiInfo arrival:', apiInfo);
 
         // 4. Build a payload that will contain our mapped fields
-        const fieldsMapped = await mapBridgeKommo(
+        const fieldsAndTagsMapped = await mapBridgeKommo(
             formData,
             apiInfo.kommo_map,
-            DEFINED_TAGS
+            DEFINED_TAG_CONFIG
         ) as z.infer<typeof requestPayloadSchema>;
 
-        console.log('🔍 lead card custom fields values: ', fieldsMapped.leadCardCustomFieldsValues);
-        console.log('🔍 contact custom fields values: ', fieldsMapped.contactCustomFieldsValues);
+        console.log('🔍 lead card custom fields values: ', fieldsAndTagsMapped.leadCardCustomFieldsValues);
+        console.log('🔍 contact custom fields values: ', fieldsAndTagsMapped.contactCustomFieldsValues);
 
         const insertLeadRoute = `https://betterspeakers.kommo.com/api/v4/leads`;
 
@@ -52,10 +52,10 @@ export class RegistrationService {
                 // depending on what we need, we should have a dir 
                 // that contains all custom functions that we are 
                 // building to generate the tags                
-                tagIds: fieldsMapped.tagIds, 
-                leadCardName: fieldsMapped.leadCardName,
-                leadCardCustomFieldsValues: fieldsMapped.leadCardCustomFieldsValues,
-                contactCustomFieldsValues: fieldsMapped.contactCustomFieldsValues,
+                tagIds: fieldsAndTagsMapped.tagIds, 
+                leadCardName: fieldsAndTagsMapped.leadCardName,
+                leadCardCustomFieldsValues: fieldsAndTagsMapped.leadCardCustomFieldsValues,
+                contactCustomFieldsValues: fieldsAndTagsMapped.contactCustomFieldsValues,
             }
         }]
 
@@ -68,7 +68,7 @@ export class RegistrationService {
             message: 'API found',
             formData: formData,
             apiInfo: apiInfo,
-            fieldsMapped: fieldsMapped,
+            fieldsAndTagsMapped: fieldsAndTagsMapped,
             requestsComposed: requests,
             executorResponse: response,
         }

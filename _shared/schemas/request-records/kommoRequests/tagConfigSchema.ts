@@ -20,31 +20,31 @@ import { z } from "zod";
 export const tagConfigSchema = z.object({
     grade: z.object({
         addGradeTags: z.boolean(),
-        formGradeFieldId: z.string(),
+        formGradeFieldId: z.string().nullable(),
         gradeTagsMap: z.record(z.string(), z.number()),
     }).nullable(),
     module: z.object({
         addModuleIDTags: z.boolean(),
-        moduleTagId: z.number(),
+        moduleTagId: z.number().nullable(),
     }).nullable(),
     studentLevel: z.object({
         addStudentLevelTags: z.boolean(),
-        formGradeFieldId: z.string(), // !Important: this is the same as the grade field id because the code adds the school level based on the grade
+        formGradeFieldId: z.string().nullable(), // !Important: this is the same as the grade field id because the code adds the school level based on the grade
         studentLevelTagsMap: z.record(z.string(), z.number()),
     }).nullable(),
     group: z.object({
         addGroupTags: z.boolean(),
-        formGroupFieldId: z.string(),
+        formGroupFieldId: z.string().nullable(),
         groupTagsMap: z.record(z.string(), z.number()),
     }).nullable(),
     segment: z.object({
         addSegmentTags: z.boolean(),
-        segmentID: z.enum(["Public Speaking", "Debate"]),
-        segmentTagId: z.number(),
+        segmentID: z.enum(["Public Speaking", "Debate"]).nullable(),
+        segmentTagId: z.number().nullable(),
     }).nullable(),
     demoDay: z.object({
         addDemoDayTags: z.boolean(),
-        formDemoDayFieldId: z.string(),
+        formDemoDayFieldId: z.string().nullable(),
         demoDayTagsMap: z.record(z.string(), z.number()),
     }).nullable(),
 }).strict();

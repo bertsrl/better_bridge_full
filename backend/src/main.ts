@@ -20,8 +20,6 @@ async function bootstrap() {
   
   const port = process.env.PORT || 8080;
 
-  console.log("kommoApiToken: ", kommoApiToken);
-
   console.log("CHECK ENV VAlUES: ", env);
 
   server.listen(port, () => {

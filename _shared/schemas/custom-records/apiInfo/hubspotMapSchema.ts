@@ -4,4 +4,4 @@ import { fieldsMappingSchema } from "./fields-mapping-records/fieldsMappingSchem
 export const hubspotMapSchema = z.object({
     segmentListIdAdded: z.boolean(),
     segmentColumnsMappingKeys: fieldsMappingSchema,
-}).strict();
+}).strict().nullable();

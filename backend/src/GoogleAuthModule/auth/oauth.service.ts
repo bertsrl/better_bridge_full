@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { google, Auth } from 'googleapis';
-import clientSecret from './client_secret_oauth.com.json';
+import { getEnv } from 'PARENT_DIR/_shared/env';
 
 @Injectable()
 export class GoogleOAuthService {
@@ -12,9 +12,10 @@ export class GoogleOAuthService {
   ];
 
   constructor() {
+    const env = getEnv();
     this.oauth2Client = new google.auth.OAuth2(
-      clientSecret.web.client_id,
-      clientSecret.web.client_secret,
+      env.OAUTH_GOOGLE_CLIENT_ID,
+      env.OAUTH_GOOGLE_CLIENT_SECRET,
       'http://localhost:8080/oauth2callback',
     );
   }

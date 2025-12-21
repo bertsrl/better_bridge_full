@@ -1,17 +1,18 @@
 import { Injectable } from '@nestjs/common';
 import { Auth, google } from 'googleapis';
 import { GoogleOAuthStore } from '../GoogleAuthModule/authStore/googleOAuthStore';
-import clientSecret from '../GoogleAuthModule/auth/client_secret_oauth.com.json';
+import { getEnv } from 'PARENT_DIR/_shared/env';
 
 @Injectable()
 export class GoogleAuthService {
   private oauth2Client: Auth.OAuth2Client;
 
   getClient(): any | undefined {
-    try {
+  try {
+    const env = getEnv();
     this.oauth2Client = new google.auth.OAuth2(
-      clientSecret.web.client_id,
-      clientSecret.web.client_secret,
+      env.OAUTH_GOOGLE_CLIENT_ID,
+      env.OAUTH_GOOGLE_CLIENT_SECRET,
       'http://localhost:8080/oauth2callback',
     );
     
@@ -35,7 +36,6 @@ export class GoogleAuthService {
       console.warn('No refresh token found. Please authenticate first via /auth');
     }
 
-    console.log("clientSecret: ", clientSecret);
     console.log('Google OAuth store refresh token:', refreshToken || 'NOT SET');
     console.log('Google OAuth store access token:', accessToken || 'NOT SET');
     console.log("oauth2Client: ", this.oauth2Client);
