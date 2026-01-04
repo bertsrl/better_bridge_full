@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, Switch, useLocation } from "wouter";
+import { Link, useLocation, useParams } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -43,7 +43,8 @@ import {
 import LeadCardMappingsCard from "@/components/create-endpoints/lead-card-mappings-card";
 import getPipelines from "@/phone/kommo/get-pipelines";
 import TagsMappingsCard from "@/components/create-endpoints/tags-mappings-card";
-import { createApiInfo } from "@/dbOps/firebase/apiInfo/create";
+import { updateApiInfo } from "@/dbOps/firebase/apiInfo/update";
+import { fetchApiInfoById } from "@/dbOps/firebase/apiInfo/fetch";
 
 // Mock Data for Dropdowns
 const kommoContactFields = [
@@ -70,9 +71,12 @@ const hubspotMockHeaders = [
   "Lead Status",
 ];
 
-export default function CreateRoute() {
+export default function EditRoute() {
+  const params = useParams();
+  const apiInfoId = params.id || "";
   const [, setLocation] = useLocation();
   const [isSaving, setIsSaving] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   // Kommo Pipelines State
   const [kommoPipelines, setKommoPipelines] = useState<Record<string, string>>(
@@ -136,6 +140,39 @@ export default function CreateRoute() {
       setKommoPipelines(pipelines);
     });
   };
+
+  // Fetch API Info on mount
+  useEffect(() => {
+    const loadApiInfo = async () => {
+      if (!apiInfoId) {
+        console.error("❌ No API Info ID provided");
+        setIsLoading(false);
+        return;
+      }
+
+      setIsLoading(true);
+      try {
+        const apiInfo = await fetchApiInfoById(apiInfoId);
+        if (apiInfo) {
+          console.log("✅ API Info loaded:", apiInfo);
+          setLocalNewApiInfo(apiInfo);
+        } else {
+          console.error("❌ API Info not found");
+          alert("API Info not found");
+          setLocation("/endpoints");
+        }
+      } catch (error) {
+        console.error("❌ Error loading API Info:", error);
+        alert("Failed to load API Info");
+        setLocation("/endpoints");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadApiInfo();
+    fetchKommoPipelines();
+  }, [apiInfoId]);
 
   const addKommoMapping = (type: "contacts" | "leads") => {
     setKommoMappings((prev) => ({
@@ -212,10 +249,6 @@ export default function CreateRoute() {
     console.log("🔍 localNewApiInfo: ", localNewApiInfo);
   }, [localNewApiInfo]);
 
-  useEffect(() => {
-    fetchKommoPipelines();
-  }, []);
-
   const handleSave = async () => {
     // Validate required fields
     if (!localNewApiInfo.endpoint || !localNewApiInfo.method) {
@@ -223,21 +256,39 @@ export default function CreateRoute() {
       return;
     }
 
+    if (!apiInfoId) {
+      alert("Invalid API Info ID");
+      return;
+    }
+
     setIsSaving(true);
     try {
-      console.log("🔍 Saving API Info:", localNewApiInfo);
-      const docId = await createApiInfo(localNewApiInfo);
-      console.log("✅ API Info created successfully with ID:", docId);
+      console.log("🔍 Updating API Info:", localNewApiInfo);
+      await updateApiInfo(apiInfoId, localNewApiInfo);
+      console.log("✅ API Info updated successfully");
 
       // Navigate to endpoints page after successful save
       setLocation("/endpoints");
     } catch (error) {
-      console.error("❌ Error saving API Info:", error);
-      alert("Failed to create endpoint. Please try again.");
+      console.error("❌ Error updating API Info:", error);
+      alert("Failed to update endpoint. Please try again.");
     } finally {
       setIsSaving(false);
     }
   };
+
+  if (isLoading) {
+    return (
+      <div className="max-w-5xl mx-auto space-y-8 animate-in fade-in duration-500 pb-20">
+        <div className="flex items-center justify-center min-h-[400px]">
+          <div className="flex flex-col items-center gap-4">
+            <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+            <p className="text-muted-foreground">Loading API Info...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-5xl mx-auto space-y-8 animate-in fade-in duration-500 pb-20">
@@ -254,10 +305,10 @@ export default function CreateRoute() {
         </Link>
         <div>
           <h1 className="text-3xl font-bold tracking-tight text-foreground">
-            Create API Route
+            Edit API Route
           </h1>
           <p className="text-muted-foreground mt-1">
-            Configure data ingestion and mapping for external CRMs.
+            Update data ingestion and mapping configuration for external CRMs.
           </p>
         </div>
       </div>
@@ -364,119 +415,6 @@ export default function CreateRoute() {
                   newApiInfo={localNewApiInfo}
                   updateNewApiInfo={setLocalNewApiInfo}
                 />
-
-                {/* Contacts Column */}
-                {/* <Card
-                  className="rounded-none border-border shadow-none bg-background"
-                  style={{
-                    // if disabled then gray the entire card and content
-                    opacity: localKommoMap?.contactMappingEnabled ? 1 : 0.5,
-                    filter: localKommoMap?.contactMappingEnabled
-                      ? "none"
-                      : "grayscale(100%)",
-                  }}
-                >
-                  <CardHeader className="bg-secondary/30 pb-3 border-b border-border">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <CardTitle className="text-sm font-bold uppercase tracking-wider">
-                          Contacts Mapping
-                        </CardTitle>
-                        <div
-                          className="flex gap-3 space-x-2 px-3 border 
-                        border-border rounded-full p-1 
-                        hover:bg-secondary cursor-pointer"
-                          onClick={() => {
-                            setLocalKommoMap((prev) => ({
-                              ...prev!,
-                              contactMappingEnabled:
-                                !prev?.contactMappingEnabled,
-                            }));
-                          }}
-                        >
-                          <span className="text-xs font-bold uppercase tracking-wider">
-                            Enable
-                          </span>
-                          <Checkbox
-                            className="cursor-pointer"
-                            checked={
-                              localKommoMap?.contactMappingEnabled ?? false
-                            }
-                          />
-                        </div>
-                      </div>
-                      <Button
-                        size="sm"
-                        variant="ghost"
-                        onClick={() => addKommoMapping("contacts")}
-                        className="h-6 w-6 p-0 rounded-none hover:bg-secondary"
-                      >
-                        <Plus className="h-4 w-4" />
-                      </Button>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="p-0">
-                    <div className="divide-y divide-border">
-                      {localKommoMap?.contactMappingEnabled &&
-                        kommoMappings.contacts.map((mapping, idx) => (
-                          <div key={idx} className="p-3 grid gap-2">
-                            <div className="grid grid-cols-7 gap-2 items-center">
-                              <Input
-                                placeholder="JSON Key"
-                                value={mapping.key}
-                                onChange={(e) =>
-                                  updateKommoMapping(
-                                    "contacts",
-                                    idx,
-                                    "key",
-                                    e.target.value
-                                  )
-                                }
-                                className="col-span-3 rounded-none h-8 text-xs font-mono"
-                              />
-                              <div className="col-span-1 flex justify-center text-muted-foreground">
-                                <ArrowRight className="h-3 w-3" />
-                              </div>
-                              <Select
-                                value={mapping.field}
-                                onValueChange={(val) =>
-                                  updateKommoMapping(
-                                    "contacts",
-                                    idx,
-                                    "field",
-                                    val
-                                  )
-                                }
-                              >
-                                <SelectTrigger className="col-span-3 rounded-none h-8 text-xs">
-                                  <SelectValue placeholder="Select Field" />
-                                </SelectTrigger>
-                                <SelectContent className="rounded-none">
-                                  {kommoContactFields.map((f) => (
-                                    <SelectItem key={f} value={f}>
-                                      {f}
-                                    </SelectItem>
-                                  ))}
-                                </SelectContent>
-                              </Select>
-                            </div>
-                            {kommoMappings.contacts.length > 1 && (
-                              <div className="flex justify-end">
-                                <button
-                                  onClick={() =>
-                                    removeKommoMapping("contacts", idx)
-                                  }
-                                  className="text-[10px] text-destructive hover:underline uppercase font-bold tracking-wider"
-                                >
-                                  Remove
-                                </button>
-                              </div>
-                            )}
-                          </div>
-                        ))}
-                    </div>
-                  </CardContent>
-                </Card> */}
               </div>
             </div>
           )}
@@ -636,7 +574,7 @@ export default function CreateRoute() {
           ) : (
             <>
               <Save className="mr-2 h-4 w-4" />
-              Create Endpoint
+              Update Endpoint
             </>
           )}
         </Button>
@@ -644,3 +582,4 @@ export default function CreateRoute() {
     </div>
   );
 }
+

@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { Search, Plus, Filter, MoreHorizontal, ArrowRight } from "lucide-react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -40,6 +40,7 @@ export default function ApiEndpointsTableRow({
 }: {
   apiInfo: ApiInfo;
 }) {
+  const [, setLocation] = useLocation();
   const [localApiInfo, setLocalApiInfo] = useState<ApiInfo>(apiInfo);
   const [apiInfoRowDisabled, setApiInfoRowDisabled] = useState<boolean>(false);
 
@@ -102,7 +103,10 @@ export default function ApiEndpointsTableRow({
             align="end"
             className="rounded-none border-border"
           >
-            <DropdownMenuItem className="rounded-none cursor-pointer">
+            <DropdownMenuItem
+              className="rounded-none cursor-pointer"
+              onClick={() => setLocation(`/endpoints/edit/${localApiInfo.id}`)}
+            >
               Edit Route
             </DropdownMenuItem>
             <DropdownMenuItem className="rounded-none cursor-pointer">

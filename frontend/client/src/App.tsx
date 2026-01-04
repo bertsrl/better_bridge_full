@@ -10,6 +10,7 @@ import ApiEndpoints from "@/pages/api-endpoints";
 import ApiLogs from "@/pages/api-logs";
 import ActionPage from "@/pages/action-page";
 import CreateRoute from "@/pages/create-route";
+import EditRoute from "@/pages/edit-route";
 import OperationsList from "@/pages/operations-list";
 
 function Router() {
@@ -19,6 +20,7 @@ function Router() {
         <Route path="/" component={Dashboard} />
         <Route path="/endpoints" component={ApiEndpoints} />
         <Route path="/endpoints/create" component={CreateRoute} />
+        <Route path="/endpoints/edit/:id" component={EditRoute} />
         <Route path="/logs" component={ApiLogs} />
         <Route path="/operations" component={OperationsList} />
         <Route path="/actions/:actionId" component={ActionPage} />
