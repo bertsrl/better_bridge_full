@@ -1,12 +1,12 @@
 import axios from 'axios';
 import { getFieldsMap } from './fields/fieldsMap';
 import { getTagsMap } from './tags/tagsMap';
-import dotenv from 'dotenv';
+// import dotenv from 'dotenv';
 import { getPipelinesMap } from './pipelines/pipelinesMap';
 import { type AdditionalData } from '@/utils/types/miscellaneous.types';
 import { getUsersMap } from './users/usersMap';
 
-dotenv.config();
+// dotenv.config();
 
 const insertLeadRoute = `https://betterspeakers.kommo.com/api/v4/leads`;
 const insertTaskRoute = `https://betterspeakers.kommo.com/api/v4/tasks`;

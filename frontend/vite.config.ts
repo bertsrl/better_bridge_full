@@ -28,12 +28,12 @@ export default defineConfig(({ mode }) => {
     return acc;
   }, {} as Record<string, string>);
 
-  console.log("🔍 Loaded Firebase env vars:", {
-    FIREBASE_API_KEY: firebaseEnvVars.FIREBASE_API_KEY ? "***" : "MISSING",
-    FIREBASE_PROJECT_ID: firebaseEnvVars.FIREBASE_PROJECT_ID || "MISSING",
-    KOMMO_API_TOKEN: firebaseEnvVars.KOMMO_API_TOKEN ? "***" : "MISSING",
-    KOMMO_DOMAIN: firebaseEnvVars.KOMMO_DOMAIN || "MISSING",
-  });
+  // console.log("🔍 Loaded Firebase env vars:", {
+  //   FIREBASE_API_KEY: firebaseEnvVars.FIREBASE_API_KEY ? "***" : "MISSING",
+  //   FIREBASE_PROJECT_ID: firebaseEnvVars.FIREBASE_PROJECT_ID || "MISSING",
+  //   KOMMO_API_TOKEN: firebaseEnvVars.KOMMO_API_TOKEN ? "***" : "MISSING",
+  //   KOMMO_DOMAIN: firebaseEnvVars.KOMMO_DOMAIN || "MISSING",
+  // });
 
   return {
     envDir: path.resolve(import.meta.dirname),
@@ -63,7 +63,7 @@ export default defineConfig(({ mode }) => {
     },
     root: path.resolve(import.meta.dirname, "client"),
     build: {
-      outDir: path.resolve(import.meta.dirname, "dist/public"),
+      outDir: path.resolve(import.meta.dirname, "dist"),
       emptyOutDir: true,
     },
     server: {

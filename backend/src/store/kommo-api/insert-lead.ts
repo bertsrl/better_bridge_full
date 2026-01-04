@@ -2,9 +2,9 @@ import { FinalCrmEntry } from '@/utils/types/entry.types';
 import axios from 'axios';
 import { getFieldsMap } from './fields/fieldsMap';
 import { getTagsMap } from './tags/tagsMap';
-import dotenv from 'dotenv';
+// import dotenv from 'dotenv';
 
-dotenv.config();
+// dotenv.config();
 
 const insertLeadRoute = `https://betterspeakers.kommo.com/api/v4/leads`;
 

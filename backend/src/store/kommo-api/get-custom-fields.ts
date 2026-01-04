@@ -1,8 +1,8 @@
 import axios from 'axios';
-import dotenv from 'dotenv';
+// import dotenv from 'dotenv';
 const getCustomFieldsRoute = `https://betterspeakers.kommo.com/api/v4/leads/custom_fields`;
 
-dotenv.config();
+// dotenv.config();
 
 export default async function getCustomFields() {
     const response = await axios.get(getCustomFieldsRoute, {
