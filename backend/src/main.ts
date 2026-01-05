@@ -3,11 +3,11 @@ import { AppModule } from './app.module';
 import { ExpressAdapter } from '@nestjs/platform-express';
 import express from 'express';
 import * as path from 'path';
-import { getEnv } from "PARENT_DIR/_shared/env";
+// import { getEnv } from "PARENT_DIR/_shared/env";
 const server = express();
 
-const kommoApiToken = getEnv()['KOMMO_API_TOKEN'];
-const env = getEnv();
+// const kommoApiToken = getEnv()['KOMMO_API_TOKEN'];
+// const env = getEnv();
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, new ExpressAdapter(server));
