@@ -7,9 +7,9 @@
   "license": "UNLICENSED",
   "scripts": {
     "prebuild": "npx rimraf dist",
-    "build": "nest build",
+    "build": "dotenv -e ../.env -- nest build",
     "postbuild": "npx cpx \"public/**/*\" \"dist/public\" && node scripts/reorganize-dist.js",
-    "start": "npm run build && node dist/main.js",
+    "start": "dotenv -e ../.env -- npm run build && node dist/main.js",
     "start:dev": "nest start --watch --env-file .env",
     "start:debug": "nest start --debug --watch --env-file .env",
     "start:prod": "node dist/main.js",

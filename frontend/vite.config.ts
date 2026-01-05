@@ -3,9 +3,8 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 import { metaImagesPlugin } from "./vite-plugin-meta-images";
-import dotenv from "dotenv";
-
-dotenv.config();
+import kommoConfig from "../_shared/kommo/kommo-config";
+import { firebaseConfig } from "../_shared/firebase/firebase-config";
 
 export default defineConfig(({ mode }) => {
   // Load env file based on `mode` in the current working directory.
@@ -14,29 +13,29 @@ export default defineConfig(({ mode }) => {
   
   // Map Firebase env vars to import.meta.env without VITE_ prefix
   const firebaseEnvVars = {
-    FIREBASE_API_KEY: process.env.FIREBASE_API_KEY,
-    FIREBASE_AUTH_DOMAIN: process.env.FIREBASE_AUTH_DOMAIN,
-    FIREBASE_PROJECT_ID: process.env.FIREBASE_PROJECT_ID,
-    FIREBASE_STORAGE_BUCKET: process.env.FIREBASE_STORAGE_BUCKET,
-    FIREBASE_MESSAGING_SENDER_ID: process.env.FIREBASE_MESSAGING_SENDER_ID,
-    FIREBASE_APP_ID: process.env.FIREBASE_APP_ID,
+    FIREBASE_API_KEY: firebaseConfig.apiKey,
+    FIREBASE_AUTH_DOMAIN: firebaseConfig.authDomain,
+    FIREBASE_PROJECT_ID: firebaseConfig.projectId,
+    FIREBASE_STORAGE_BUCKET: firebaseConfig.storageBucket,
+    FIREBASE_MESSAGING_SENDER_ID: firebaseConfig.messagingSenderId,
+    FIREBASE_APP_ID: firebaseConfig.appId,
+  };
 
-    KOMMO_API_TOKEN: process.env.KOMMO_API_TOKEN,
-    KOMMO_DOMAIN: process.env.KOMMO_DOMAIN,
+  const kommoEnvVars = {
+    KOMMO_API_TOKEN: kommoConfig.apiToken,
+    KOMMO_DOMAIN: kommoConfig.domain,
   };
 
   // Create define object with all Firebase vars
-  const defineEnv = Object.entries(firebaseEnvVars).reduce((acc, [key, value]) => {
-    acc[`import.meta.env.${key}`] = JSON.stringify(value);
-    return acc;
-  }, {} as Record<string, string>);
+  // const defineEnv = Object.entries(firebaseEnvVars).reduce((acc, [key, value]) => {
+  //   acc[`import.meta.env.${key}`] = JSON.stringify(value);
+  //   return acc;
+  // }, {} as Record<string, string>);
 
   console.log("🔍 Loaded Firebase env vars:", {
-    FIREBASE_API_KEY: process.env.FIREBASE_API_KEY ? "***" : "MISSING",
-    FIREBASE_PROJECT_ID: process.env.FIREBASE_PROJECT_ID ? "***" : "MISSING",
-    KOMMO_API_TOKEN: process.env.KOMMO_API_TOKEN ? "***" : "MISSING",
-    KOMMO_DOMAIN: process.env.KOMMO_DOMAIN ? "***" : "MISSING",
-  });
+    ...firebaseEnvVars,
+    ...kommoEnvVars,
+  }); 
 
   return {
     // envDir: path.resolve(),
@@ -46,11 +45,16 @@ export default defineConfig(({ mode }) => {
       metaImagesPlugin(),
       [],
     ],
-    define: {
-      ...defineEnv,
-      // Keep this for any other process.env usage
-      "process.env": "import.meta.env",
-    },
+    // define: {
+    // 'import.meta.env.VITE_FIREBASE_API_KEY': JSON.stringify(process.env.FIREBASE_API_KEY),
+    // 'import.meta.env.VITE_FIREBASE_PROJECT_ID': JSON.stringify(process.env.FIREBASE_PROJECT_ID),
+    // 'import.meta.env.VITE_FIREBASE_AUTH_DOMAIN': JSON.stringify(process.env.FIREBASE_AUTH_DOMAIN),
+    // 'import.meta.env.VITE_FIREBASE_STORAGE_BUCKET': JSON.stringify(process.env.FIREBASE_STORAGE_BUCKET),
+    // 'import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID': JSON.stringify(process.env.FIREBASE_MESSAGING_SENDER_ID),
+    // 'import.meta.env.VITE_FIREBASE_APP_ID': JSON.stringify(process.env.FIREBASE_APP_ID),
+    // 'import.meta.env.VITE_KOMMO_API_TOKEN': JSON.stringify(process.env.KOMMO_API_TOKEN),
+    // 'import.meta.env.VITE_KOMMO_DOMAIN': JSON.stringify(process.env.KOMMO_DOMAIN),
+    // },
     resolve: {
       alias: [
         { find: "@", replacement: path.resolve(import.meta.dirname, "client", "src") },
