@@ -26,10 +26,10 @@ export default defineConfig(({ mode }) => {
   };
 
   // Create define object with all Firebase vars
-  // const defineEnv = Object.entries(firebaseEnvVars).reduce((acc, [key, value]) => {
-  //   acc[`import.meta.env.${key}`] = JSON.stringify(value);
-  //   return acc;
-  // }, {} as Record<string, string>);
+  const defineEnv = Object.entries(firebaseEnvVars).reduce((acc, [key, value]) => {
+    acc[`import.meta.env.${key}`] = JSON.stringify(value);
+    return acc;
+  }, {} as Record<string, string>);
 
   console.log("🔍 Loaded Firebase env vars:", {
     FIREBASE_API_KEY: process.env.FIREBASE_API_KEY ? "***" : "MISSING",
@@ -46,16 +46,11 @@ export default defineConfig(({ mode }) => {
       metaImagesPlugin(),
       [],
     ],
-    // define: {
-    // 'import.meta.env.VITE_FIREBASE_API_KEY': JSON.stringify(process.env.FIREBASE_API_KEY),
-    // 'import.meta.env.VITE_FIREBASE_PROJECT_ID': JSON.stringify(process.env.FIREBASE_PROJECT_ID),
-    // 'import.meta.env.VITE_FIREBASE_AUTH_DOMAIN': JSON.stringify(process.env.FIREBASE_AUTH_DOMAIN),
-    // 'import.meta.env.VITE_FIREBASE_STORAGE_BUCKET': JSON.stringify(process.env.FIREBASE_STORAGE_BUCKET),
-    // 'import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID': JSON.stringify(process.env.FIREBASE_MESSAGING_SENDER_ID),
-    // 'import.meta.env.VITE_FIREBASE_APP_ID': JSON.stringify(process.env.FIREBASE_APP_ID),
-    // 'import.meta.env.VITE_KOMMO_API_TOKEN': JSON.stringify(process.env.KOMMO_API_TOKEN),
-    // 'import.meta.env.VITE_KOMMO_DOMAIN': JSON.stringify(process.env.KOMMO_DOMAIN),
-    // },
+    define: {
+      ...defineEnv,
+      // Keep this for any other process.env usage
+      "process.env": "import.meta.env",
+    },
     resolve: {
       alias: [
         { find: "@", replacement: path.resolve(import.meta.dirname, "client", "src") },
