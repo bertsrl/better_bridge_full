@@ -20,7 +20,7 @@ async function bootstrap() {
   
   const port = process.env.PORT || 8080;
 
-  console.log("CHECK ENV VAlUES: ", env);
+  // console.log("CHECK ENV VAlUES: ", env);
 
   server.listen(port, () => {
     console.log(`Application is running on port ${port}`);

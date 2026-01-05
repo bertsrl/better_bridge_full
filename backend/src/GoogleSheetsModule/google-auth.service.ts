@@ -20,8 +20,8 @@ export class GoogleAuthService {
     const refreshToken = GoogleOAuthStore.getInstance().getRefreshToken();
     const accessToken = GoogleOAuthStore.getInstance().getAccessToken();
     
-    console.log("refreshToken: ", refreshToken);
-    console.log("accessToken: ", accessToken);
+    // console.log("refreshToken: ", refreshToken);
+    // console.log("accessToken: ", accessToken);
 
     // Only set credentials if we have at least a refresh token
     if (refreshToken) {
@@ -36,9 +36,9 @@ export class GoogleAuthService {
       console.warn('No refresh token found. Please authenticate first via /auth');
     }
 
-    console.log('Google OAuth store refresh token:', refreshToken || 'NOT SET');
-    console.log('Google OAuth store access token:', accessToken || 'NOT SET');
-    console.log("oauth2Client: ", this.oauth2Client);
+    // console.log('Google OAuth store refresh token:', refreshToken || 'NOT SET');
+    // console.log('Google OAuth store access token:', accessToken || 'NOT SET');
+    // console.log("oauth2Client: ", this.oauth2Client);
 
         return this.oauth2Client;
     } catch (error) {
